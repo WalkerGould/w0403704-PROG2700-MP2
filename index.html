@@ -1,0 +1,133 @@
+<!--
+Student: Walker Gould
+Student ID: w0403704
+Course: Prog2700
+Assignment: PROG2700 — Mini-Project 2 (MP2) Public API Explorer UI (Vanilla JavaScript + Tailwind CSS)
+Instructor: Davis Boudreau
+Date: March 17th, 2026
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/style.css" rel="stylesheet">
+    <title>prog2700-mp2</title>
+  </head>
+
+  <body class="min-h-screen bg-slate-100 p-6 grid place-items-center">
+    <main class="max-w-4xl w-full">
+      
+      <!-- App container -->
+      <div id="app" class="bg-white p-6 rounded-2xl shadow w-full">
+
+        <!-- Header Section -->
+        <header class="bg-white rounded-2xl shadow p-6 mb-6">
+          <h1 class="text-2xl font-bold text-primary">Mars Weather App</h1>
+          <p class="text-slate-600 mt-1">
+            Public API Explorer UI (Vanilla JavaScript + Tailwind CSS) - This is a Mars Weather Application made using NAPA's API called Insight. It's made by using a robot that has sensors and collects data on Mars.
+          </p>
+
+          <div class="mt-4 rounded-lg bg-slate-50 border border-slate-200 p-4 text-sm text-slate-700">
+            <p class="font-semibold text-slate-800">API Key Reminder</p>
+            <ul class="mt-2 space-y-2">
+              <li class="bg-gray-100 p-2 rounded border-l-4 border-blue-500">
+                Do <strong>not</strong> commit your API key to GitHub.
+              </li>
+              <li class="bg-gray-100 p-2 rounded border-l-4 border-blue-500">
+                Use your assigned key for in-class testing.
+              </li>
+              <li class="bg-gray-100 p-2 rounded border-l-4 border-blue-500">
+                We will discuss safer key strategies when we introduce auth + server-side proxying.
+              </li>
+            </ul>
+          </div>
+        </header>
+
+        <!-- Search Form + Status/Error Section (partially removed) -->
+        <section class="mt-6 bg-white rounded-2xl shadow p-6">
+          <h2 class="text-lg font-semibold text-primary">Mars</h2>
+
+          <!-- Search form partially removed -->
+          <form id="search-form" class="mt-4 flex flex-col sm:flex-row sm:items-end justify-center gap-4">
+
+            <!-- API Key input -->
+            <div class="w-full sm:w-64 flex flex-col">
+              <label for="apiKey" class="block text-sm font-medium text-slate-700">NASA Open API Key</label>
+              <input id="apiKey" type="password" placeholder="Paste your key"
+                class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2
+                      focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary"/>
+            </div>
+
+            <!-- Submit button -->
+            <div>
+              <button id="search-btn" type="submit"
+                class="rounded-md bg-primary px-5 py-2 text-white font-semibold
+                      hover:bg-secondary transition disabled:opacity-50 disabled:cursor-not-allowed">
+                Get Forecast
+              </button>
+            </div>
+
+          </form>
+          <p id="status" class="mt-4 text-sm text-slate-600"></p>
+          <p id="error" class="mt-2 text-sm text-red-700"></p>
+        </section>
+
+        <!-- Results Section -->
+        <section class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- Current Snapshot -->
+          <div class="lg:col-span-1 bg-white rounded-2xl shadow p-6">
+            <h2 class="text-lg font-semibold text-primary">Current Snapshot</h2>
+            <div id="current" class="mt-4 text-slate-700 text-sm">
+              <p class="text-slate-500">Click the search button for data to load.</p>
+            </div>
+          </div>
+
+          <!-- Forecast -->
+          <div class="lg:col-span-2 bg-white rounded-2xl shadow p-6">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+              <!-- Heading -->
+              <h2 class="text-lg font-semibold text-primary flex-shrink-0">Forecast Sols (Martian days)</h2>
+
+              <!-- Buttons + checkbox -->
+              <div class="flex flex-wrap gap-2 items-center">
+                <button id="clear-btn" type="button"
+                  class="rounded-md border border-slate-300 px-4 py-2 text-white bg-black hover:bg-gray-800 transition">
+                  Clear
+                </button>
+                <button id="units-btn" type="button"
+                  class="rounded-md border border-slate-300 px-4 py-2 text-white bg-black hover:bg-gray-800 transition">
+                  Units
+                </button>
+                <button id="adjustSolsBtn" type="button"
+                  class="rounded-md border border-slate-300 px-4 py-2 text-white bg-black hover:bg-gray-800 transition">
+                  Show 3 sols
+                </button>
+                <label class="flex items-center rounded-md border border-slate-300 px-4 py-2 text-white bg-black hover:bg-gray-800 transition">
+                  <input type="checkbox" id="filterTimes" class="mr-2"> Show only 09:00, 12:00, 15:00 UTC
+                </label>
+              </div>
+            </div>
+            <div id="forecast" class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Forecast cards injected here -->
+              <div class="flex items-center mb-4">
+                <input type="checkbox" id="filterTimesCheckbox" class="mr-2" />
+                <label for="filterTimesCheckbox" class="rounded-md border border-slate-300 px-4 py-2 text-white bg-black hover:bg-gray-800 transition">
+                  Show only 09:00 / 12:00 / 15:00 UTC
+                </label>
+                <div id="forecastEl" class="grid grid-cols-2 sm:grid-cols-4 gap-4"></div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

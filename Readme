@@ -1,0 +1,81 @@
+README.md must include:
+
+Project title:
+
+Public API Explorer UI (Vanilla JavaScript + Tailwind CSS) - This is a Mars Weather Application made using NAPA's API called Insight
+
+API used: NASA Insight API
+
+Description of the application
+
+This fetches data from a robot on Mars, it captures things like temperature, pressure, etc using sensors. e.g. weather
+information.
+
+Instructions for running the project:
+
+You need an API key from NASA or you may be able to use 'demo_key'
+
+Here you make one https://api.nasa.gov/
+
+So below after you follow instructions you need to paste your API key into the interface and then search forecast.
+
+Part B — Create the Project Environment
+
+You will develop the project using VS Code.
+
+Recommended tools:
+
+VS Code
+Node.js (LTS)
+Vite (simple development server)
+
+Step 1 — Create the project - execute in terminal such as command prompt inside the main directory.
+
+npm create vite@latest prog2700-mp2 -- --template vanilla
+cd prog2700-mp2
+npm install
+
+Step 2 — Install Tailwind CSS
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+Step 3 — Configure Tailwind
+
+Edit tailwind.config.js
+
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+Step 4 — Add Tailwind directives
+
+Create or edit src/style.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Step 5 — Import CSS
+In src/main.js
+
+import "./style.css";
+
+Step 6 — Run the development server
+
+npm run dev
+
+Now click on localhost:port that you will see in console and it will take you to the page.
+
+Memory Jog
+If Tailwind styles do not appear, the most common issue is an incorrect content path in tailwind.config.js.
+
+Screenshots of the interface
+
+![alt text](example-user-interface-apio.png)
+
+GitHub Pages link
